@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "Domain Guard AI - Guvenli Internet",
+  "version": "1.0.0",
+  "description": "Yapay zeka destekli URL analizi ve phishing korumasi.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs",
+    "notifications"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "public/background.js"
+  },
+  "action": {
+    "default_popup": "public/index.html",
+    "default_title": "Domain Analizi"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "public/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "public/logo192.png",
+    "48": "public/logo192.png",
+    "128": "public/logo192.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "public/logo192.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
